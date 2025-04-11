@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicTacToe_WPF
 {
-    internal class Gameboard
+    class Buttonclass : System.Windows.Controls.Button
     {
     }
 }
