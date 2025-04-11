@@ -20,11 +20,30 @@ namespace TicTacToe_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Button> Button = new List<Button>();
+        public int AmountOfHorizontalButtons;
+        public int AmountOfVerticalButtons;
         public MainWindow()
         {
             InitializeComponent();
         }
-
-
+        public void InitializeGameBoard()
+        {
+            int positionInGrid = 0;
+            for (int j = 0; j < AmountOfVerticalButtons;  j++)
+            {
+                for (int i = 0; i < AmountOfHorizontalButtons; i++)
+                {
+                    Buttonclass buttonToAdd = new Buttonclass
+                    {
+                        Name = "Button" + (j * AmountOfHorizontalButtons + i).ToString(),
+                        RowIndex = j,
+                        ColumnIndex= i,
+                    };
+                    Button.Add(buttonToAdd);
+                    positionInGrid++;
+                }
+            }
+        }
     }
 }
