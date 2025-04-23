@@ -20,7 +20,7 @@ namespace TicTacToe_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Button> Button = new List<Button>();
+        public List<Button> AllButtons = new List<Button>();
         public int AmountOfHorizontalButtons;
         public int AmountOfVerticalButtons;
         public MainWindow()
@@ -39,6 +39,7 @@ namespace TicTacToe_WPF
                         Name = "Button" + (j * AmountOfHorizontalButtons + i).ToString(),
                         RowIndex = j,
                         ColumnIndex= i,
+                        PositionInGrid = positionInGrid,
                     };
                     Button.Add(buttonToAdd);
                     positionInGrid++;
