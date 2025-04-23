@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TicTacToe_WPF
 {
@@ -19,25 +20,30 @@ namespace TicTacToe_WPF
 
         }
 
-        public void GetsClicked(Buttonclass Button)
-        {
-            string symbolToShow;
-            //Button.IsPressed = true;
-            Button.IsEnabled = false;
+   
 
-            if (CrossSymbol)
-            {
-                symbolToShow = "x";
-            }
-            if (CircleSymbol)
-            {
-                symbolToShow = "o";
-            }
-            else
-            {
-                symbolToShow = " ";
-            }
-            this.Content = symbolToShow;
+        public void GetsClicked(Buttonclass Button, char currentSymbol)
+        {
+            Button.Content = currentSymbol;
+
+            //string symbolToShow;
+            //Button.IsPressed = true;
+            //Button.IsEnabled = false;
+
+
+            //if (CrossSymbol)
+            //{
+            //    symbolToShow = "x";
+            //}
+            //if (CircleSymbol)
+            //{
+            //    symbolToShow = "o";
+            //}
+            //else
+            //{
+            //    symbolToShow = " ";
+            //}
+            //Button.Content = symbolToShow;
         }
     }
 }

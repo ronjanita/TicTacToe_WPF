@@ -21,11 +21,12 @@ namespace TicTacToe_WPF
     public partial class MainWindow : Window
     {
         public List<Button> AllButtons = new List<Button>();
-        public int AmountOfHorizontalButtons;
-        public int AmountOfVerticalButtons;
+        public int AmountOfHorizontalButtons = 3;
+        public int AmountOfVerticalButtons = 3;
         public MainWindow()
         {
             InitializeComponent();
+            InitializeGameBoard();
         }
         public void InitializeGameBoard()
         {
@@ -41,10 +42,21 @@ namespace TicTacToe_WPF
                         ColumnIndex= i,
                         PositionInGrid = positionInGrid,
                     };
-                    Button.Add(buttonToAdd);
+                    //buttonToAdd.Click += Buttonclass.GetsClicked();
+
+                    Grid.SetColumn(buttonToAdd, i);
+                    Grid.SetRow(buttonToAdd, j);
+                    MainGrid.Children.Add(buttonToAdd);
+                    AllButtons.Add(buttonToAdd);
                     positionInGrid++;
                 }
             }
+        }
+        private void ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            char currentSymbol = 'x'; // TODO ersetzen mit Logik zum spielerwechsel
+            Buttonclass senderButton = (Buttonclass)e.OriginalSource;
+            senderButton.GetsClicked(senderButton, currentSymbol);
         }
     }
 }

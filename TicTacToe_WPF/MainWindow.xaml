@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TicTacToe_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="300">
-    <Grid>
+    <Grid x:Name="MainGrid" Button.Click="ButtonClicked">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="100"/>
