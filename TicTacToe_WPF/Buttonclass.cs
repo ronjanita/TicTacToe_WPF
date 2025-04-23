@@ -12,16 +12,11 @@ namespace TicTacToe_WPF
         public int RowIndex;
         public int ColumnIndex;
         public int PositionInGrid;
-        public bool CrossSymbol;
-        public bool CircleSymbol;
 
         public Buttonclass()
         {
 
         }
-
-   
-
         public void GetsClicked(Buttonclass Button, char currentSymbol)
         {
             Button.Content = currentSymbol;

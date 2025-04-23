@@ -23,6 +23,7 @@ namespace TicTacToe_WPF
         public List<Button> AllButtons = new List<Button>();
         public int AmountOfHorizontalButtons = 3;
         public int AmountOfVerticalButtons = 3;
+        public char currentSymbol = 'x';
         public MainWindow()
         {
             InitializeComponent();
@@ -52,11 +53,28 @@ namespace TicTacToe_WPF
                 }
             }
         }
-        private void ButtonClicked(object sender, RoutedEventArgs e)
+        public void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            char currentSymbol = 'x'; // TODO ersetzen mit Logik zum spielerwechsel
             Buttonclass senderButton = (Buttonclass)e.OriginalSource;
+            
             senderButton.GetsClicked(senderButton, currentSymbol);
+            
+            Button clickedButton = sender as Button;
+            string buttonContent = clickedButton.Content.ToString();  //macht string aus char
+            if (clickedButton != null && string.IsNullOrEmpty(buttonContent))  //null überprüft ob überhauptein button existiert, string.IsNull... schaut ob der button leer ist, der string leer ist.
+            {
+                clickedButton.Content = currentSymbol;
+
+                if(currentSymbol == 'x')
+                {
+                    currentSymbol = 'o';
+                }
+                else
+                {
+                    currentSymbol = 'x';
+                }
+            }
+
         }
     }
 }
