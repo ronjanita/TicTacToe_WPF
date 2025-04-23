@@ -55,15 +55,17 @@ namespace TicTacToe_WPF
         }
         public void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            Buttonclass senderButton = (Buttonclass)e.OriginalSource;
+            //Buttonclass senderButton = (Buttonclass)e.OriginalSource;
             
-            senderButton.GetsClicked(senderButton, currentSymbol);
+            //senderButton.GetsClicked
             
-            Button clickedButton = sender as Button;
+            Buttonclass clickedButton = (Buttonclass)e.OriginalSource;
+            if (clickedButton == null) { return; }
             string buttonContent = clickedButton.Content.ToString();  //macht string aus char
             if (clickedButton != null && string.IsNullOrEmpty(buttonContent))  //null überprüft ob überhauptein button existiert, string.IsNull... schaut ob der button leer ist, der string leer ist.
             {
-                clickedButton.Content = currentSymbol;
+            clickedButton.GetsClicked(clickedButton, currentSymbol);
+            clickedButton.Content = currentSymbol;
 
                 if(currentSymbol == 'x')
                 {
@@ -74,7 +76,6 @@ namespace TicTacToe_WPF
                     currentSymbol = 'x';
                 }
             }
-
         }
     }
 }

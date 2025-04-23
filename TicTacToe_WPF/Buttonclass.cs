@@ -17,9 +17,9 @@ namespace TicTacToe_WPF
         {
 
         }
-        public void GetsClicked(Buttonclass Button, char currentSymbol)
+        public void GetsClicked(Buttonclass clickedButton, char currentSymbol)
         {
-            Button.Content = currentSymbol;
+            clickedButton.Content = currentSymbol;
 
             //string symbolToShow;
             //Button.IsPressed = true;
