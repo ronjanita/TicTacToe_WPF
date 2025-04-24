@@ -71,53 +71,53 @@ namespace TicTacToe_WPF
                     Showplayer.Text = "current player: x";
                 }
             }
+            CheckWin();
         }
         public bool CheckWin()
         {
-            Showplayer.Text = " ";
-
-            char[] allButtons = new char[AllButtons.Count];  //char array mit gleiocher länge wie anzahl buttons in AllButtons liste
-
+            char?[] allButtons = new char?[AllButtons.Count];  //char array mit gleiocher länge wie anzahl buttons in AllButtons liste 
+            Console.WriteLine(AllButtons);
             for (int i = 0; i < AllButtons.Count; i++)  //geht durch jeden Button und macht zeichen in ein char
             {
-                allButtons[i] = (char)AllButtons[i].Content;
+                allButtons[i] = (char?)AllButtons[i].Content;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)  //Horizontale Überprüfung (Reihenweise)
             {
                 if (allButtons[i * 3] == currentSymbol &&
                     allButtons[i * 3 + 1] == currentSymbol &&
                     allButtons[i * 3 + 2] == currentSymbol)
                 {
-                    return true; 
+                    Showwinner.Text = $"the winner is player {currentSymbol}. Congratulations!";
+                    return true;
                 }
             }
-            // Vertikale Überprüfung (Spaltenweise):
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++) // Vertikale Überprüfung (Spaltenweise)
             {
                 if (allButtons[i] == currentSymbol &&
+
                     allButtons[i + 3] == currentSymbol &&
                     allButtons[i + 6] == currentSymbol)
                 {
-                    return true; 
+                    Showwinner.Text = $"the winner is player {currentSymbol}. Congratulations!";
+                    return true;
                 }
             }
-            // Diagonale Überprüfung (links oben nach rechts unten):
-            if (allButtons[0] == currentSymbol &&
+            if (allButtons[0] == currentSymbol && // Diagonale Überprüfung (links oben nach rechts unten)
                 allButtons[4] == currentSymbol &&
                 allButtons[8] == currentSymbol)
             {
+                Showwinner.Text = $"the winner is player {currentSymbol}. Congratulations!";
                 return true;
             }
-            // Diagonale Überprüfung (rechts oben nach links unten):
-            if (allButtons[2] == currentSymbol &&
+            if (allButtons[2] == currentSymbol && // Diagonale Überprüfung (rechts oben nach links unten)
                 allButtons[4] == currentSymbol &&
                 allButtons[6] == currentSymbol)
             {
+                Showwinner.Text = $"the winner is player {currentSymbol}. Congratulations!";
                 return true;
             }
-            return false; // Kein Gewinner
+            Showwinner.Text = "it's a draw. Noone won :(";
+            return false; // Kein Gewinner, Unentschieden
         }
-
-
-}
+    }
 }
