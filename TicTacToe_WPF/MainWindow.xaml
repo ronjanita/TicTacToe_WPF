@@ -8,9 +8,9 @@
         Title="MainWindow" Height="450" Width="300">
     <Grid x:Name="MainGrid" Button.Click="ButtonClicked">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="Showplayer" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Background="LightBlue" />
+        <TextBlock x:Name="Showplayer" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Background="LightBlue" TextWrapping="Wrap" />
         <TextBlock x:Name="Showwinner" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Background="AliceBlue"/> 
     </Grid>
 </Window>
