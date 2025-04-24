@@ -12,33 +12,15 @@ namespace TicTacToe_WPF
         public int RowIndex;
         public int ColumnIndex;
         public int PositionInGrid;
+        public bool alreadyOpen = false;
 
-        public Buttonclass()
-        {
+        public Buttonclass(){}
 
-        }
         public void GetsClicked(Buttonclass clickedButton, char currentSymbol)
         {
             clickedButton.Content = currentSymbol;
-
-            //string symbolToShow;
-            //Button.IsPressed = true;
-            //Button.IsEnabled = false;
-
-
-            //if (CrossSymbol)
-            //{
-            //    symbolToShow = "x";
-            //}
-            //if (CircleSymbol)
-            //{
-            //    symbolToShow = "o";
-            //}
-            //else
-            //{
-            //    symbolToShow = " ";
-            //}
-            //Button.Content = symbolToShow;
+            alreadyOpen = true;
+            clickedButton.IsEnabled = false;
         }
     }
 }

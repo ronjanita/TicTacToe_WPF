@@ -27,6 +27,7 @@ namespace TicTacToe_WPF
         public MainWindow()
         {
             InitializeComponent();
+            Showplayer.Text = "Welcome to TicTacToe, start game by pressing a button of your choice. x starts.";
             InitializeGameBoard();
         }
         public void InitializeGameBoard()
@@ -41,10 +42,8 @@ namespace TicTacToe_WPF
                         Name = "Button" + (j * AmountOfHorizontalButtons + i).ToString(),
                         RowIndex = j,
                         ColumnIndex= i,
-                        PositionInGrid = positionInGrid,
+                        PositionInGrid = positionInGrid
                     };
-                    //buttonToAdd.Click += Buttonclass.GetsClicked();
-
                     Grid.SetColumn(buttonToAdd, i);
                     Grid.SetRow(buttonToAdd, j);
                     MainGrid.Children.Add(buttonToAdd);
@@ -55,26 +54,31 @@ namespace TicTacToe_WPF
         }
         public void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            //Buttonclass senderButton = (Buttonclass)e.OriginalSource;
-            
-            //senderButton.GetsClicked
-            
             Buttonclass clickedButton = (Buttonclass)e.OriginalSource;
-            if (clickedButton == null) { return; }
-            string buttonContent = clickedButton.Content.ToString();  //macht string aus char
-            if (clickedButton != null && string.IsNullOrEmpty(buttonContent))  //null überprüft ob überhauptein button existiert, string.IsNull... schaut ob der button leer ist, der string leer ist.
-            {
-            clickedButton.GetsClicked(clickedButton, currentSymbol);
             clickedButton.Content = currentSymbol;
+            if (clickedButton == null) { return; }
+            if (clickedButton.alreadyOpen == false)  //null überprüft ob überhauptein button existiert, string.IsNull... schaut ob der button leer ist, der string leer ist.
+            {
+                clickedButton.GetsClicked(clickedButton, currentSymbol);
 
                 if(currentSymbol == 'x')
                 {
                     currentSymbol = 'o';
+                    Showplayer.Text = "current player: o";
                 }
                 else
                 {
                     currentSymbol = 'x';
+                    Showplayer.Text = "current player: x";
                 }
+            }
+        }
+        
+        public void CheckWin(int AmountOfHorizontalButtons, int AmountOfVerticalButtons)
+        {
+            if (currentSymbol == AmountOfHorizontalButtons && AmountOfVerticalButtons)
+            {
+
             }
         }
     }
