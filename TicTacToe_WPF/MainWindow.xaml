@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="Showplayer" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Background="LightBlue"/>
+        <TextBlock x:Name="Showplayer" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Background="LightBlue" />
         <TextBlock x:Name="Showwinner" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Background="AliceBlue"/> 
     </Grid>
 </Window>

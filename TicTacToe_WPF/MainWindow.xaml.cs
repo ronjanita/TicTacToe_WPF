@@ -55,7 +55,6 @@ namespace TicTacToe_WPF
         public void ButtonClicked(object sender, RoutedEventArgs e)
         {
             Buttonclass clickedButton = (Buttonclass)e.OriginalSource;
-            clickedButton.Content = currentSymbol;
             if (clickedButton == null) { return; }
             if (clickedButton.alreadyOpen == false)  //null überprüft ob überhauptein button existiert, string.IsNull... schaut ob der button leer ist, der string leer ist.
             {
@@ -73,13 +72,52 @@ namespace TicTacToe_WPF
                 }
             }
         }
-        
-        public void CheckWin(int AmountOfHorizontalButtons, int AmountOfVerticalButtons)
+        public bool CheckWin()
         {
-            if (currentSymbol == AmountOfHorizontalButtons && AmountOfVerticalButtons)
-            {
+            Showplayer.Text = " ";
 
+            char[] allButtons = new char[AllButtons.Count];  //char array mit gleiocher länge wie anzahl buttons in AllButtons liste
+
+            for (int i = 0; i < AllButtons.Count; i++)  //geht durch jeden Button und macht zeichen in ein char
+            {
+                allButtons[i] = (char)AllButtons[i].Content;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                if (allButtons[i * 3] == currentSymbol &&
+                    allButtons[i * 3 + 1] == currentSymbol &&
+                    allButtons[i * 3 + 2] == currentSymbol)
+                {
+                    return true; 
+                }
+            }
+            // Vertikale Überprüfung (Spaltenweise):
+            for (int i = 0; i < 3; i++)
+            {
+                if (allButtons[i] == currentSymbol &&
+                    allButtons[i + 3] == currentSymbol &&
+                    allButtons[i + 6] == currentSymbol)
+                {
+                    return true; 
+                }
+            }
+            // Diagonale Überprüfung (links oben nach rechts unten):
+            if (allButtons[0] == currentSymbol &&
+                allButtons[4] == currentSymbol &&
+                allButtons[8] == currentSymbol)
+            {
+                return true;
+            }
+            // Diagonale Überprüfung (rechts oben nach links unten):
+            if (allButtons[2] == currentSymbol &&
+                allButtons[4] == currentSymbol &&
+                allButtons[6] == currentSymbol)
+            {
+                return true;
+            }
+            return false; // Kein Gewinner
         }
-    }
+
+
+}
 }
